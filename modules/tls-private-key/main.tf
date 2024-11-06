@@ -7,7 +7,7 @@ rsa_bits = 4096
 
  #Create a Key Pair for SSH access
 resource "aws_key_pair" "ec2_key" {
-  key_name   = "ec2_pem"
+  key_name = var.key_name
  public_key = tls_private_key.rsa_4096.public_key_openssh
 }
 
