@@ -36,5 +36,4 @@ module "ec2-resources" {
   vpc_id = module.network-resources.vpc_id
   security_group_id = module.security-resources.security_group_id
   public_subnet_id = module.network-resources.public_subnet_id
-  key_name = aws_key_pair.ec2_key.key_name
-}
+ }
