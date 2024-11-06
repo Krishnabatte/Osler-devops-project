@@ -10,7 +10,6 @@ module "security-resources" {
 
 module "tls-private-key" {
 source = "./modules/tls-private-key"
-key_name = module.tls-private-key.key_name
 }
 
 module "ec2-resources" {
