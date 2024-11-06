@@ -8,6 +8,10 @@ module "security-resources" {
   vpc_id = module.network-resources.vpc_id
 }
 
+module "tls-private-key" {
+source = "./modules/tls-private-key"
+}
+
 module "ec2-resources" {
   source = "./modules/ec2-resources"
   vpc_id = module.network-resources.vpc_id
