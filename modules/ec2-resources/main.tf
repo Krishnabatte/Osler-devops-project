@@ -3,8 +3,8 @@ resource "aws_instance" "jenkins_flask_instance" {
   ami           = var.ami_id  # amazon Linux 2 AMI
   instance_type = var.instance_type               # Free-tier eligible instance
    # Use the key pair created earlier
-   #key_name = aws_key_pair.ec2_key.key_name
-  key_name = module.tls-private-key.key_name
+   key_name = aws_key_pair.ec2_key.key_name
+  #key_name = module.tls-private-key.key_name
   # Associate security group
   #vpc_security_group_ids = [aws_security_group.jenkins_flask_sg.id]
 
