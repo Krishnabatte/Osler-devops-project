@@ -18,5 +18,5 @@ module "ec2-resources" {
   vpc_id = module.network-resources.vpc_id
   security_group_id = module.security-resources.security_group_id
   public_subnet_id = module.network-resources.public_subnet_id
-  key_name = module.ec2_tls_key.key_name
+  #key_name = module.ec2_tls_key.key_name
 }
