@@ -1,11 +1,12 @@
 # Launch EC2 Instance and install Dockerized Jenkins, Flask web server
 resource "aws_instance" "jenkins_flask_instance" {
-  ami           = "ami-0ddc798b3f1a5117e"  # amazon Linux 2 AMI
-  instance_type = "t2.micro"               # Free-tier eligible instance
+  ami           = var.ami_id  # amazon Linux 2 AMI
+  instance_type = var.instance_type               # Free-tier eligible instance
    # Use the key pair created earlier
-  key_name = aws_key_pair.ec2_key.key_name
+ # key_name = aws_key_pair.ec2_key.key_name
+  #key_name = module.ec2_tls_key.key_name
   # Associate security group
-  vpc_security_group_ids = [aws_security_group.jenkins_flask_sg.id]
+  #vpc_security_group_ids = [aws_security_group.jenkins_flask_sg.id]
 
   # Specify the path to the private key for SSH access
   #connection {
