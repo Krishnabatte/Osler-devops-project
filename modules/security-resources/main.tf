@@ -2,6 +2,7 @@
 resource "aws_security_group" "jenkins_flask_sg" {
   name        = "jenkins_flask_sg"
   description = "Allow SSH, HTTP, and Jenkins"
+  vpc_id = var.vpc_id
 															  
   # Inbound rules for SSH
   ingress {
