@@ -3,11 +3,11 @@ algorithm = "RSA"
 rsa_bits = 4096
 }
 
-variable "key_name" {}
+#variable "key_name" {}
 
  #Create a Key Pair for SSH access
 resource "aws_key_pair" "ec2_key" {
-  key_name   = var.key_name
+  key_name   = ec2_pem
  public_key = tls_private_key.rsa_4096.public_key_openssh
 }
 
