@@ -17,7 +17,7 @@ output "jenkins_url" {
 }
 
 output "public_subnet_id" {
-  value = module.subnets.public_subnet_id
+  value = module.network-resources.public_subnet_id
 }
 
 
