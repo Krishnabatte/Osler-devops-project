@@ -15,16 +15,8 @@ resource "aws_route_table" "public_route_table" {
   tags = { Name = "public_route_table" }
 }
 
-resource "aws_subnet" "public_subnet" {
-  # Configure your subnet details here
-  vpc_id            = var.vpc_id
-  cidr_block        = var.public_subnet_cidr
-  #availability_zone = var.availability_zone
-  map_public_ip_on_launch = true
-}
-
 resource "aws_route_table_association" "public_subnet_assoc" {
-  subnet_id      = aws_subnet.public_subnet.id
+  subnet_id      = var.public_subnet.id
   route_table_id = aws_route_table.public_route_table.id
 }
 
