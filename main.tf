@@ -16,7 +16,7 @@ key_name = "ec2_pem"
 # Call Internet Gateway module
 module "internet_gateway" {
   source = "./modules/internet_gateway"
-  vpc_id = aws_vpc.default.id
+  vpc_id = module.network-resources.vpc_id
 }
 
 module "ec2-resources" {
