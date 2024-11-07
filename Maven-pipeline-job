@@ -21,7 +21,7 @@ pipeline {
             steps {
                  script{
                   echo "Calling Flask Web Server at flask_url"
-          def response = sh(script: "curl -s ${http://google.com}", returnStdout: true).trim()
+          def response = sh(script: "curl -s ${aws_instance.jenkins_flask_instance.id=5000}", returnStdout: true).trim()
                     echo "Response from Flask: ${response}"
 					echo "Upload the output to S3"
                     aws s3 cp ${response} s3://jenkins-job-output-bucket/
