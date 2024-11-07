@@ -1,0 +1,47 @@
+//import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition
+import jenkins.model.*
+import hudson.model.*
+
+// Set pipeline script definition
+def pipelineScript = """	
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                 script{
+                  echo "Calling Flask Web Server at flask_url"
+          def response = sh(script: "curl -s ${aws_instance.jenkins_flask_instance.id=5000}", returnStdout: true).trim()
+                    echo "Response from Flask: ${response}"
+					echo "Upload the output to S3"
+                    aws s3 cp ${response} s3://jenkins-job-output-bucket/
+                
+               }
+            }
+        }
+    }
+}
+"""
+
+def jenkins = Jenkins.instance
+
+// Create a new pipeline job
+def job = jenkins.createProject(org.jenkinsci.plugins.workflow.job.WorkflowJob, "AutoPipelineJob")
+
+// Assign the script to the pipeline job
+//job.definition = new CpsFlowDefinition(pipelineScript, true)
+job.definition = new org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition(pipelineScript, true)
+
+// Save and enable the job
+job.save()
+job.scheduleBuild2(0)
