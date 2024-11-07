@@ -13,6 +13,12 @@ source = "./modules/tls-private-key"
 key_name = "ec2_pem"
 }
 
+# Call Internet Gateway module
+module "internet_gateway" {
+  source = "./modules/internet_gateway"
+  vpc_id = aws_vpc.default.id
+}
+
 module "ec2-resources" {
   source = "./modules/ec2-resources"
   key_name = module.tls-private-key.key_name
