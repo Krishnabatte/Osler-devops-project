@@ -7,6 +7,7 @@ resource "aws_instance" "jenkins_flask_instance" {
   #key_name = module.tls-private-key.key_name
   # Associate security group
   vpc_security_group_ids = [var.security_group_id]
+  subnet_id = var.public_subnet_id
 
   # Specify the path to the private key for SSH access
   #connection {
