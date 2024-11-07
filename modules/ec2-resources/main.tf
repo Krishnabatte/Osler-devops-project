@@ -104,5 +104,5 @@ resource "aws_instance" "jenkins_flask_instance" {
   }
 
   # Associate a public IP address
-  associate_public_ip_address = true
+  #associate_public_ip_address = true
 }
